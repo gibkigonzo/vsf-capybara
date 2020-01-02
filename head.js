@@ -8,9 +8,7 @@ export default {
     { charset: "utf-8" },
     {
       vmid: "description",
-      name: "description",
-      content:
-        "Vue Storefront is a standalone PWA storefront for your eCommerce, possible to connect with any eCommerce backend (eg. Magento, Prestashop or Shopware) through the API."
+      name: "description"
     },
     {
       name: "viewport",
