@@ -7,8 +7,15 @@
     />
     <div class="o-product-details__description">
       <SfSticky>
-        <MProductShortInfo />
-        <ATextAction class="o-product-details__text-action" text="Size guide" />
+        <MProductShortInfo
+          :title="product.name | htmlDecode"
+          :sku="product.sku"
+        />
+        <ATextAction
+          class="o-product-details__text-action"
+          text="Size guide"
+          @click="openSizeGuide"
+        />
         <MProductOptions />
         <div class="o-product-details__section">
           <SfAlert
@@ -85,6 +92,11 @@ export default {
           alt: this.product.name
         }
       }));
+    }
+  },
+  methods: {
+    openSizeGuide() {
+      this.$bus.$emit("modal-show", "modal-sizeguide");
     }
   }
 };

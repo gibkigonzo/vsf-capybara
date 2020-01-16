@@ -497,9 +497,6 @@ export default {
       );
       this.getQuantity();
     },
-    openSizeGuide() {
-      this.$bus.$emit("modal-show", "modal-sizeguide");
-    },
     isOptionAvailable(option) {
       // check if the option is available
       const currentConfig = Object.assign(

@@ -1,6 +1,10 @@
 <template>
   <div class="a-text-action">
-    <button class="sf-action">{{ text }}</button>
+    <button class="sf-action" @click="$emit('click')">
+      <slot>
+        {{ text }}
+      </slot>
+    </button>
   </div>
 </template>
 <script>

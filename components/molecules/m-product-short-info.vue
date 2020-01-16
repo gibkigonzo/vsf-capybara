@@ -3,7 +3,7 @@
     <div class="m-product-short-info__mobile-top">
       <div>
         <SfHeading
-          title="Cashmere Sweater"
+          :title="title"
           :level="1"
           class="sf-heading--no-underline sf-heading--left m-product-short-info__heading"
         />
@@ -12,32 +12,46 @@
             regular="$50.00"
             class="sf-price--big m-product-short-info__sub-price"
           />
-          <div class="m-product-short-info__sub-rating">
-            <SfRating :score="4" :max="5" />
-            <div class="m-product-short-info__sub-reviews desktop-only">
-              Read all 1 review
-            </div>
-            <div class="m-product-short-info__sub-reviews mobile-only">
-              (1)
-            </div>
-          </div>
+          <AProductRating
+            :score="productRating.score"
+            :max="productRating.max"
+            :review="productRating.review"
+          />
         </div>
       </div>
     </div>
-    <p class="m-product-short-info__description desktop-only">
-      Find stunning women cocktail and party dresses. Stand out in lace and
-      metallic cocktail dresses and party dresses from all your favorite brands.
-    </p>
+    <div class="m-product-short-info__description desktop-only">
+      {{ $t("SKU: {sku}", { sku: sku }) }}
+    </div>
   </div>
 </template>
 <script>
-import { SfPrice, SfRating, SfHeading } from "@storefront-ui/vue";
+import { SfPrice, SfHeading } from "@storefront-ui/vue";
+import AProductRating from "theme/components/atoms/a-product-rating";
 export default {
   name: "MProductShortInfo",
   components: {
     SfPrice,
-    SfRating,
-    SfHeading
+    SfHeading,
+    AProductRating
+  },
+  props: {
+    title: {
+      type: String,
+      default: ""
+    },
+    sku: {
+      type: String,
+      default: ""
+    },
+    productRating: {
+      type: Object,
+      default: () => ({
+        score: 5,
+        max: 5,
+        review: 1
+      })
+    }
   }
 };
 </script>
@@ -93,17 +107,6 @@ export default {
       flex-basis: auto;
       margin-top: $spacer-big / 2;
     }
-  }
-  &__sub-rating {
-    display: flex;
-    margin-top: $spacer-big / 2;
-    @include for-desktop {
-      margin-left: auto;
-    }
-  }
-  &__sub-reviews {
-    margin-left: 10px;
-    font-size: 0.75rem;
   }
 }
 </style>

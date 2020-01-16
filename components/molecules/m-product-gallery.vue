@@ -138,16 +138,5 @@ export default {
       width: 100%;
     }
   }
-  ::v-deep {
-    .sf-image {
-      width: 100%;
-    }
-    .sf-image__img {
-      width: 100%;
-      img {
-        width: 100%;
-      }
-    }
-  }
 }
 </style>
