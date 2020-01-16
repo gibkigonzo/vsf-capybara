@@ -1,6 +1,6 @@
 <template>
   <div id="product" itemscope itemtype="http://schema.org/Product">
-    <section class="bg-cl-secondary px20 product-top-section">
+    <!-- <section class="bg-cl-secondary px20 product-top-section">
       <div class="container">
         <section class="row m0 between-xs">
           <div class="col-xs-12 col-md-6 center-xs middle-xs image">
@@ -233,14 +233,15 @@
           <div class="details-overlay" @click="showDetails" />
         </div>
       </div>
-    </section>
-    <lazy-hydrate when-idle>
+    </section> -->
+    <OProductDetails />
+    <!-- <lazy-hydrate when-idle>
       <reviews
         v-show="isOnline"
         :product-name="getOriginalProduct.name"
         :product-id="getOriginalProduct.id"
       />
-    </lazy-hydrate>
+    </lazy-hydrate> -->
     <lazy-hydrate when-idle>
       <SfSection
         :title-heading="$t('We found other products you might like')"
@@ -263,24 +264,24 @@
 
 <script>
 import config from "config";
-import Reviews from "theme/components/core/blocks/Reviews/Reviews";
-import AddToCart from "theme/components/core/AddToCart";
-import GenericSelector from "theme/components/core/GenericSelector";
-import ColorSelector from "theme/components/core/ColorSelector";
-import SizeSelector from "theme/components/core/SizeSelector";
-import Breadcrumbs from "theme/components/core/Breadcrumbs";
-import ProductAttribute from "theme/components/core/ProductAttribute";
-import ProductQuantity from "theme/components/core/ProductQuantity";
-import ProductLinks from "theme/components/core/ProductLinks";
-import ProductCustomOptions from "theme/components/core/ProductCustomOptions";
-import ProductBundleOptions from "theme/components/core/ProductBundleOptions";
-import ProductGallery from "theme/components/core/ProductGallery";
+// import Reviews from "theme/components/core/blocks/Reviews/Reviews";
+// import AddToCart from "theme/components/core/AddToCart";
+// import GenericSelector from "theme/components/core/GenericSelector";
+// import ColorSelector from "theme/components/core/ColorSelector";
+// import SizeSelector from "theme/components/core/SizeSelector";
+// import Breadcrumbs from "theme/components/core/Breadcrumbs";
+// import ProductAttribute from "theme/components/core/ProductAttribute";
+// import ProductQuantity from "theme/components/core/ProductQuantity";
+// import ProductLinks from "theme/components/core/ProductLinks";
+// import ProductCustomOptions from "theme/components/core/ProductCustomOptions";
+// import ProductBundleOptions from "theme/components/core/ProductBundleOptions";
+// import ProductGallery from "theme/components/core/ProductGallery";
 import PromotedOffers from "theme/components/theme/blocks/PromotedOffers/PromotedOffers";
 import focusClean from "theme/components/theme/directives/focusClean";
-import WebShare from "theme/components/theme/WebShare";
+// import WebShare from "theme/components/theme/WebShare";
 import SizeGuide from "theme/components/core/blocks/Product/SizeGuide";
-import AAddToWishlist from "theme/components/atoms/a-add-to-wishlist";
-import AAddToCompare from "theme/components/atoms/a-add-to-compare";
+// import AAddToWishlist from "theme/components/atoms/a-add-to-wishlist";
+// import AAddToCompare from "theme/components/atoms/a-add-to-compare";
 import { mapGetters } from "vuex";
 import LazyHydrate from "vue-lazy-hydration";
 import { ProductOption } from "@vue-storefront/core/modules/catalog/components/ProductOption.ts";
@@ -300,32 +301,34 @@ import { registerModule } from "@vue-storefront/core/lib/modules";
 import { onlineHelper, isServer } from "@vue-storefront/core/helpers";
 import { catalogHooksExecutors } from "@vue-storefront/core/modules/catalog-next/hooks";
 import MRelatedProducts from "theme/components/molecules/m-related-products";
+import OProductDetails from "theme/components/organisms/o-product-details";
 
 import { SfSection } from "@storefront-ui/vue";
 
 export default {
   components: {
-    AddToCart,
-    AAddToCompare,
-    AAddToWishlist,
-    Breadcrumbs,
-    ColorSelector,
-    GenericSelector,
-    ProductAttribute,
-    ProductBundleOptions,
-    ProductCustomOptions,
-    ProductGallery,
-    ProductLinks,
+    // AddToCart,
+    // AAddToCompare,
+    // AAddToWishlist,
+    // Breadcrumbs,
+    // ColorSelector,
+    // GenericSelector,
+    // ProductAttribute,
+    // ProductBundleOptions,
+    // ProductCustomOptions,
+    // ProductGallery,
+    // ProductLinks,
     PromotedOffers,
-    Reviews,
-    SizeSelector,
-    WebShare,
+    // Reviews,
+    // SizeSelector,
+    // WebShare,
     SizeGuide,
     LazyHydrate,
-    ProductQuantity,
+    // ProductQuantity,
     /////////////////
     MRelatedProducts,
-    SfSection
+    SfSection,
+    OProductDetails
   },
   directives: { focusClean },
   mixins: [ProductOption],

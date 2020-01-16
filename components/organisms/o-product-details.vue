@@ -1,0 +1,81 @@
+<template>
+  <div class="o-product-details">
+    <MProductGallery />
+    <div class="o-product-details__description">
+      <SfSticky>
+        <MProductShortInfo />
+        <ATextAction class="o-product-details__text-action" text="Size guide" />
+        <MProductOptions />
+        <div class="o-product-details__section">
+          <SfAlert
+            message="Low in stock"
+            type="warning"
+            class="o-product-details__alert"
+          />
+          <MProductCallToAction />
+        </div>
+        <MProductAdditionalInfo />
+      </SfSticky>
+    </div>
+  </div>
+</template>
+<script>
+import { SfAlert, SfSticky } from "@storefront-ui/vue";
+import ATextAction from "theme/components/atoms/a-text-action";
+import MProductGallery from "theme/components/molecules/m-product-gallery";
+import MProductShortInfo from "theme/components/molecules/m-product-short-info";
+import MProductOptions from "theme/components/molecules/m-product-options";
+import MProductCallToAction from "theme/components/molecules/m-product-call-to-action";
+import MProductAdditionalInfo from "theme/components/molecules/m-product-additional-info";
+
+export default {
+  components: {
+    SfAlert,
+    SfSticky,
+    ATextAction,
+    MProductGallery,
+    MProductShortInfo,
+    MProductOptions,
+    MProductCallToAction,
+    MProductAdditionalInfo
+  }
+};
+</script>
+<style lang="scss" scoped>
+@import "~@storefront-ui/vue/styles";
+
+@mixin for-desktop {
+  @media screen and (min-width: $desktop-min) {
+    @content;
+  }
+}
+
+.o-product-details {
+  @include for-desktop {
+    display: flex;
+  }
+  &__description {
+    flex: 1;
+    padding: 0 $spacer-big;
+    @include for-desktop {
+      margin-left: $spacer-big * 5;
+    }
+  }
+  &__text-action {
+    @include for-desktop {
+      justify-content: flex-end;
+    }
+  }
+  &__alert {
+    margin-top: 1.5rem;
+  }
+  &__section {
+    border-bottom: 1px solid #f1f2f3;
+    padding-bottom: 10px;
+    @include for-desktop {
+      border: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+</style>
