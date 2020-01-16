@@ -1,6 +1,10 @@
 <template>
   <div class="o-product-details">
-    <MProductGallery />
+    <MProductGallery
+      :offline-image="offlineImage"
+      :gallery="gallery"
+      :configuration="productConfiguration"
+    />
     <div class="o-product-details__description">
       <SfSticky>
         <MProductShortInfo />
@@ -20,6 +24,8 @@
   </div>
 </template>
 <script>
+import config from "config";
+import { mapGetters } from "vuex";
 import { SfAlert, SfSticky } from "@storefront-ui/vue";
 import ATextAction from "theme/components/atoms/a-text-action";
 import MProductGallery from "theme/components/molecules/m-product-gallery";
@@ -38,6 +44,48 @@ export default {
     MProductOptions,
     MProductCallToAction,
     MProductAdditionalInfo
+  },
+  computed: {
+    ...mapGetters({
+      product: "product/getCurrentProduct",
+      productGallery: "product/getProductGallery",
+      productConfiguration: "product/getCurrentProductConfiguration"
+    }),
+    offlineImage() {
+      const width = config.products.thumbnails.width;
+      const height = config.products.thumbnails.height;
+      return {
+        small: {
+          url: this.getThumbnail(this.product.image, width, height),
+          alt: this.product.name
+        },
+        normal: {
+          url: this.getThumbnail(this.product.image, width, height),
+          alt: this.product.name
+        },
+        big: {
+          url: this.getThumbnail(this.product.image, width, height),
+          alt: this.product.name
+        }
+      };
+    },
+    gallery() {
+      return this.productGallery.map(imageObject => ({
+        ...imageObject,
+        small: {
+          url: imageObject.loading,
+          alt: this.product.name
+        },
+        normal: {
+          url: imageObject.src,
+          alt: this.product.name
+        },
+        big: {
+          url: imageObject.src,
+          alt: this.product.name
+        }
+      }));
+    }
   }
 };
 </script>

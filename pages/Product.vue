@@ -1,5 +1,10 @@
 <template>
-  <div id="product" itemscope itemtype="http://schema.org/Product">
+  <div
+    id="product"
+    class="product"
+    itemscope
+    itemtype="http://schema.org/Product"
+  >
     <!-- <section class="bg-cl-secondary px20 product-top-section">
       <div class="container">
         <section class="row m0 between-xs">
@@ -263,7 +268,7 @@
 </template>
 
 <script>
-import config from "config";
+// import config from "config";
 // import Reviews from "theme/components/core/blocks/Reviews/Reviews";
 // import AddToCart from "theme/components/core/AddToCart";
 // import GenericSelector from "theme/components/core/GenericSelector";
@@ -381,25 +386,6 @@ export default {
         return [];
       }
       return this.getCurrentProduct.configurable_options;
-    },
-    getOfflineImage() {
-      return {
-        src: this.getThumbnail(
-          this.getCurrentProduct.image,
-          config.products.thumbnails.width,
-          config.products.thumbnails.height
-        ),
-        error: this.getThumbnail(
-          this.getCurrentProduct.image,
-          config.products.thumbnails.width,
-          config.products.thumbnails.height
-        ),
-        loading: this.getThumbnail(
-          this.getCurrentProduct.image,
-          config.products.thumbnails.width,
-          config.products.thumbnails.height
-        )
-      };
     },
     getCustomAttributes() {
       return Object.values(this.attributesByCode)
@@ -592,7 +578,20 @@ $color-secondary: color(secondary);
 $color-white: color(white);
 $bg-secondary: color(secondary, $colors-background);
 
+@import "~@storefront-ui/vue/styles";
+
+@mixin for-desktop {
+  @media screen and (min-width: $desktop-min) {
+    @content;
+  }
+}
+
 .product {
+  box-sizing: border-box;
+  @include for-desktop {
+    max-width: 1240px;
+    margin: auto;
+  }
   &__add-to-compare {
     display: none;
     @media (min-width: 767px) {
