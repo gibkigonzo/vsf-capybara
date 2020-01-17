@@ -41,16 +41,16 @@
               <meta
                 itemprop="priceCurrency"
                 :content="$store.state.storeView.i18n.currencyCode"
-              />
+              >
               <meta
                 itemprop="price"
                 :content="parseFloat(getCurrentProduct.priceInclTax).toFixed(2)"
-              />
+              >
               <meta
                 itemprop="availability"
                 :content="structuredData.availability"
-              />
-              <meta itemprop="url" :content="getCurrentProduct.url_path" />
+              >
+              <meta itemprop="url" :content="getCurrentProduct.url_path">
               <div
                 v-if="getCurrentProduct.type_id !== 'grouped'"
                 class="mb40 price serif"
@@ -66,8 +66,7 @@
                   <span class="h2 cl-mine-shaft weight-700">{{
                     (getCurrentProduct.priceInclTax * getCurrentProduct.qty)
                       | price
-                  }}</span
-                  >&nbsp;
+                  }}</span>&nbsp;
                   <span class="price-original h3">{{
                     (getCurrentProduct.original_price_incl_tax *
                       getCurrentProduct.qty)
@@ -281,34 +280,34 @@
 // import ProductCustomOptions from "theme/components/core/ProductCustomOptions";
 // import ProductBundleOptions from "theme/components/core/ProductBundleOptions";
 // import ProductGallery from "theme/components/core/ProductGallery";
-import PromotedOffers from "theme/components/theme/blocks/PromotedOffers/PromotedOffers";
-import focusClean from "theme/components/theme/directives/focusClean";
+import PromotedOffers from 'theme/components/theme/blocks/PromotedOffers/PromotedOffers';
+import focusClean from 'theme/components/theme/directives/focusClean';
 // import WebShare from "theme/components/theme/WebShare";
-import SizeGuide from "theme/components/core/blocks/Product/SizeGuide";
+import SizeGuide from 'theme/components/core/blocks/Product/SizeGuide';
 // import AAddToWishlist from "theme/components/atoms/a-add-to-wishlist";
 // import AAddToCompare from "theme/components/atoms/a-add-to-compare";
-import { mapGetters } from "vuex";
-import LazyHydrate from "vue-lazy-hydration";
-import { ProductOption } from "@vue-storefront/core/modules/catalog/components/ProductOption.ts";
+import { mapGetters } from 'vuex';
+import LazyHydrate from 'vue-lazy-hydration';
+import { ProductOption } from '@vue-storefront/core/modules/catalog/components/ProductOption.ts';
 import {
   getAvailableFiltersByProduct,
   getSelectedFiltersByProduct
-} from "@vue-storefront/core/modules/catalog/helpers/filters";
-import { isOptionAvailableAsync } from "@vue-storefront/core/modules/catalog/helpers/index";
+} from '@vue-storefront/core/modules/catalog/helpers/filters';
+import { isOptionAvailableAsync } from '@vue-storefront/core/modules/catalog/helpers/index';
 import {
   localizedRoute,
   currentStoreView
-} from "@vue-storefront/core/lib/multistore";
-import { htmlDecode } from "@vue-storefront/core/filters";
-import { ReviewModule } from "@vue-storefront/core/modules/review";
-import { RecentlyViewedModule } from "@vue-storefront/core/modules/recently-viewed";
-import { registerModule } from "@vue-storefront/core/lib/modules";
-import { onlineHelper, isServer } from "@vue-storefront/core/helpers";
-import { catalogHooksExecutors } from "@vue-storefront/core/modules/catalog-next/hooks";
-import MRelatedProducts from "theme/components/molecules/m-related-products";
-import OProductDetails from "theme/components/organisms/o-product-details";
+} from '@vue-storefront/core/lib/multistore';
+import { htmlDecode } from '@vue-storefront/core/filters';
+import { ReviewModule } from '@vue-storefront/core/modules/review';
+import { RecentlyViewedModule } from '@vue-storefront/core/modules/recently-viewed';
+import { registerModule } from '@vue-storefront/core/lib/modules';
+import { onlineHelper, isServer } from '@vue-storefront/core/helpers';
+import { catalogHooksExecutors } from '@vue-storefront/core/modules/catalog-next/hooks';
+import MRelatedProducts from 'theme/components/molecules/m-related-products';
+import OProductDetails from 'theme/components/organisms/o-product-details';
 
-import { SfSection } from "@storefront-ui/vue";
+import { SfSection } from '@storefront-ui/vue';
 
 export default {
   components: {
@@ -330,14 +329,14 @@ export default {
     SizeGuide,
     LazyHydrate,
     // ProductQuantity,
-    /////////////////
+    /// //////////////
     MRelatedProducts,
     SfSection,
     OProductDetails
   },
   directives: { focusClean },
   mixins: [ProductOption],
-  data() {
+  data () {
     return {
       detailsOpen: false,
       maxQuantity: 0,
@@ -348,14 +347,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getCurrentCategory: "category-next/getCurrentCategory",
-      getCurrentProduct: "product/getCurrentProduct",
-      getProductGallery: "product/getProductGallery",
-      getCurrentProductConfiguration: "product/getCurrentProductConfiguration",
-      getOriginalProduct: "product/getOriginalProduct",
-      attributesByCode: "attribute/attributeListByCode"
+      getCurrentCategory: 'category-next/getCurrentCategory',
+      getCurrentProduct: 'product/getCurrentProduct',
+      getProductGallery: 'product/getProductGallery',
+      getCurrentProductConfiguration: 'product/getCurrentProductConfiguration',
+      getOriginalProduct: 'product/getOriginalProduct',
+      attributesByCode: 'attribute/attributeListByCode'
     }),
-    getOptionLabel() {
+    getOptionLabel () {
       return option => {
         const configName = option.attribute_code
           ? option.attribute_code
@@ -365,19 +364,19 @@ export default {
           : configName;
       };
     },
-    isOnline() {
+    isOnline () {
       return onlineHelper.isOnline;
     },
-    structuredData() {
+    structuredData () {
       return {
         availability:
           this.getCurrentProduct.stock &&
           this.getCurrentProduct.stock.is_in_stock
-            ? "InStock"
-            : "OutOfStock"
+            ? 'InStock'
+            : 'OutOfStock'
       };
     },
-    getProductOptions() {
+    getProductOptions () {
       if (
         this.getCurrentProduct.errors &&
         Object.keys(this.getCurrentProduct.errors).length &&
@@ -387,7 +386,7 @@ export default {
       }
       return this.getCurrentProduct.configurable_options;
     },
-    getCustomAttributes() {
+    getCustomAttributes () {
       return Object.values(this.attributesByCode)
         .filter(a => {
           return (
@@ -402,21 +401,21 @@ export default {
           return a.attribute_id > b.attribute_id;
         });
     },
-    getAvailableFilters() {
+    getAvailableFilters () {
       return getAvailableFiltersByProduct(this.getCurrentProduct);
     },
-    getSelectedFilters() {
+    getSelectedFilters () {
       return getSelectedFiltersByProduct(
         this.getCurrentProduct,
         this.getCurrentProductConfiguration
       );
     },
-    isSimpleOrConfigurable() {
-      return ["simple", "configurable"].includes(
+    isSimpleOrConfigurable () {
+      return ['simple', 'configurable'].includes(
         this.getCurrentProduct.type_id
       );
     },
-    isAddToCartDisabled() {
+    isAddToCartDisabled () {
       return (
         this.quantityError ||
         this.isStockInfoLoading ||
@@ -426,15 +425,15 @@ export default {
   },
   watch: {
     isOnline: {
-      handler(isOnline) {
+      handler (isOnline) {
         if (isOnline) {
           this.getQuantity();
         }
       }
     }
   },
-  async asyncData({ store, route }) {
-    const product = await store.dispatch("product/loadProduct", {
+  async asyncData ({ store, route }) {
+    const product = await store.dispatch('product/loadProduct', {
       parentSku: route.params.parentSku,
       childSku:
         route && route.params && route.params.childSku
@@ -442,23 +441,23 @@ export default {
           : null
     });
     const loadBreadcrumbsPromise = store.dispatch(
-      "product/loadProductBreadcrumbs",
+      'product/loadProductBreadcrumbs',
       { product }
     );
     if (isServer) await loadBreadcrumbsPromise;
     catalogHooksExecutors.productPageVisited(product);
   },
-  beforeCreate() {
+  beforeCreate () {
     registerModule(ReviewModule);
     registerModule(RecentlyViewedModule);
   },
-  async mounted() {
+  async mounted () {
     await this.$store.dispatch(
-      "recently-viewed/addItem",
+      'recently-viewed/addItem',
       this.getCurrentProduct
     );
   },
-  beforeRouteEnter(to, from, next) {
+  beforeRouteEnter (to, from, next) {
     if (isServer) {
       next();
     } else {
@@ -468,36 +467,36 @@ export default {
     }
   },
   methods: {
-    showDetails(event) {
+    showDetails (event) {
       this.detailsOpen = true;
-      event.target.classList.add("hidden");
+      event.target.classList.add('hidden');
     },
-    notifyOutStock() {
-      this.$store.dispatch("notification/spawnNotification", {
-        type: "error",
+    notifyOutStock () {
+      this.$store.dispatch('notification/spawnNotification', {
+        type: 'error',
         message: this.$t(
-          "The product is out of stock and cannot be added to the cart!"
+          'The product is out of stock and cannot be added to the cart!'
         ),
-        action1: { label: this.$t("OK") }
+        action1: { label: this.$t('OK') }
       });
     },
-    notifyWrongAttributes() {
-      this.$store.dispatch("notification/spawnNotification", {
-        type: "warning",
+    notifyWrongAttributes () {
+      this.$store.dispatch('notification/spawnNotification', {
+        type: 'warning',
         message: this.$t(
-          "No such configuration for the product. Please do choose another combination of attributes."
+          'No such configuration for the product. Please do choose another combination of attributes.'
         ),
-        action1: { label: this.$t("OK") }
+        action1: { label: this.$t('OK') }
       });
     },
-    changeFilter(variant) {
+    changeFilter (variant) {
       this.$bus.$emit(
-        "filter-changed-product",
+        'filter-changed-product',
         Object.assign({ attribute_code: variant.type }, variant)
       );
       this.getQuantity();
     },
-    isOptionAvailable(option) {
+    isOptionAvailable (option) {
       // check if the option is available
       const currentConfig = Object.assign(
         {},
@@ -509,11 +508,11 @@ export default {
         configuration: currentConfig
       });
     },
-    async getQuantity() {
+    async getQuantity () {
       if (this.isStockInfoLoading) return; // stock info is already loading
       this.isStockInfoLoading = true;
       try {
-        const res = await this.$store.dispatch("stock/check", {
+        const res = await this.$store.dispatch('stock/check', {
           product: this.getCurrentProduct,
           qty: this.getCurrentProduct.qty
         });
@@ -522,20 +521,20 @@ export default {
         this.isStockInfoLoading = false;
       }
     },
-    handleQuantityError(error) {
+    handleQuantityError (error) {
       this.quantityError = error;
     }
   },
-  metaInfo() {
+  metaInfo () {
     const storeView = currentStoreView();
     return {
       link: [
         {
-          rel: "amphtml",
+          rel: 'amphtml',
           href: this.$router.resolve(
             localizedRoute(
               {
-                name: this.getCurrentProduct.type_id + "-product-amp",
+                name: this.getCurrentProduct.type_id + '-product-amp',
                 params: {
                   parentSku: this.getCurrentProduct.parentSku
                     ? this.getCurrentProduct.parentSku
@@ -554,12 +553,12 @@ export default {
       ),
       meta: this.getCurrentProduct.meta_description
         ? [
-            {
-              vmid: "description",
-              name: "description",
-              content: htmlDecode(this.getCurrentProduct.meta_description)
-            }
-          ]
+          {
+            vmid: 'description',
+            name: 'description',
+            content: htmlDecode(this.getCurrentProduct.meta_description)
+          }
+        ]
         : []
     };
   }
