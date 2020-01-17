@@ -7,10 +7,7 @@
     />
     <div class="o-product-details__description">
       <SfSticky>
-        <MProductShortInfo
-          :title="product.name | htmlDecode"
-          :sku="product.sku"
-        />
+        <MProductShortInfo :product="product" />
         <ATextAction
           class="o-product-details__text-action"
           text="Size guide"

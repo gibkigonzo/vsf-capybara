@@ -3,7 +3,7 @@
     <div class="m-product-short-info__mobile-top">
       <div>
         <SfHeading
-          :title="title"
+          :title="product.name | htmlDecode"
           :level="1"
           class="sf-heading--no-underline sf-heading--left m-product-short-info__heading"
         />
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="m-product-short-info__description desktop-only">
-      {{ $t("SKU: {sku}", { sku: sku }) }}
+      {{ $t("SKU: {sku}", { sku: product.sku }) }}
     </div>
   </div>
 </template>
@@ -36,21 +36,9 @@ export default {
     AProductRating
   },
   props: {
-    title: {
-      type: String,
-      default: ""
-    },
-    sku: {
-      type: String,
-      default: ""
-    },
-    productRating: {
+    product: {
       type: Object,
-      default: () => ({
-        score: 5,
-        max: 5,
-        review: 1
-      })
+      default: () => ({})
     }
   }
 };
