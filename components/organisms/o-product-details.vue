@@ -28,15 +28,15 @@
   </div>
 </template>
 <script>
-import config from "config";
-import { mapGetters } from "vuex";
-import { SfAlert, SfSticky } from "@storefront-ui/vue";
-import ATextAction from "theme/components/atoms/a-text-action";
-import MProductGallery from "theme/components/molecules/m-product-gallery";
-import MProductShortInfo from "theme/components/molecules/m-product-short-info";
-import MProductOptions from "theme/components/molecules/m-product-options";
-import MProductCallToAction from "theme/components/molecules/m-product-call-to-action";
-import MProductAdditionalInfo from "theme/components/molecules/m-product-additional-info";
+import config from 'config';
+import { mapGetters } from 'vuex';
+import { SfAlert, SfSticky } from '@storefront-ui/vue';
+import ATextAction from 'theme/components/atoms/a-text-action';
+import MProductGallery from 'theme/components/molecules/m-product-gallery';
+import MProductShortInfo from 'theme/components/molecules/m-product-short-info';
+import MProductOptions from 'theme/components/molecules/m-product-options';
+import MProductCallToAction from 'theme/components/molecules/m-product-call-to-action';
+import MProductAdditionalInfo from 'theme/components/molecules/m-product-additional-info';
 
 export default {
   components: {
@@ -49,13 +49,22 @@ export default {
     MProductCallToAction,
     MProductAdditionalInfo
   },
+  props: {
+    product: {
+      type: Object,
+      default: () => ({})
+    },
+    productGallery: {
+      type: Array,
+      default: () => []
+    },
+    productConfiguration: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   computed: {
-    ...mapGetters({
-      product: "product/getCurrentProduct",
-      productGallery: "product/getProductGallery",
-      productConfiguration: "product/getCurrentProductConfiguration"
-    }),
-    offlineImage() {
+    offlineImage () {
       const width = config.products.thumbnails.width;
       const height = config.products.thumbnails.height;
       return {
@@ -73,7 +82,7 @@ export default {
         }
       };
     },
-    gallery() {
+    gallery () {
       return this.productGallery.map(imageObject => ({
         ...imageObject,
         small: {
@@ -92,8 +101,8 @@ export default {
     }
   },
   methods: {
-    openSizeGuide() {
-      this.$bus.$emit("modal-show", "modal-sizeguide");
+    openSizeGuide () {
+      this.$bus.$emit('modal-show', 'modal-sizeguide');
     }
   }
 };

@@ -26,10 +26,10 @@
   </div>
 </template>
 <script>
-import { SfPrice, SfHeading } from "@storefront-ui/vue";
-import AProductRating from "theme/components/atoms/a-product-rating";
+import { SfPrice, SfHeading } from '@storefront-ui/vue';
+import AProductRating from 'theme/components/atoms/a-product-rating';
 export default {
-  name: "MProductShortInfo",
+  name: 'MProductShortInfo',
   components: {
     SfPrice,
     SfHeading,
@@ -39,6 +39,15 @@ export default {
     product: {
       type: Object,
       default: () => ({})
+    }
+  },
+  computed: {
+    productRating () {
+      return {
+        score: 1,
+        max: 5,
+        review: 1
+      }
     }
   }
 };

@@ -32,33 +32,33 @@
   </div>
 </template>
 <script>
-import { SfSelect, SfProductOption } from "@storefront-ui/vue";
+import { SfSelect, SfProductOption } from '@storefront-ui/vue';
 export default {
-  name: "MProductOptions",
+  name: 'MProductOptions',
   components: {
     SfSelect,
     SfProductOption
   },
-  data() {
+  data () {
     return {
-      size: "",
+      size: '',
       sizes: [
-        { label: "XXS", value: "xxs" },
-        { label: "XS", value: "xs" },
-        { label: "S", value: "s" },
-        { label: "M", value: "m" },
-        { label: "L", value: "l" },
-        { label: "XL", value: "xl" },
-        { label: "XXL", value: "xxl" }
+        { label: 'XXS', value: 'xxs' },
+        { label: 'XS', value: 'xs' },
+        { label: 'S', value: 's' },
+        { label: 'M', value: 'm' },
+        { label: 'L', value: 'l' },
+        { label: 'XL', value: 'xl' },
+        { label: 'XXL', value: 'xxl' }
       ],
-      color: "",
+      color: '',
       colors: [
-        { label: "Red", value: "red", color: "#990611" },
-        { label: "Black", value: "black", color: "#000000" },
-        { label: "Yellow", value: "yellow", color: "#DCA742" },
-        { label: "Blue", value: "blue", color: "#004F97" },
-        { label: "Navy", value: "navy", color: "#656466" },
-        { label: "White", value: "white", color: "#FFFFFF" }
+        { label: 'Red', value: 'red', color: '#990611' },
+        { label: 'Black', value: 'black', color: '#000000' },
+        { label: 'Yellow', value: 'yellow', color: '#DCA742' },
+        { label: 'Blue', value: 'blue', color: '#004F97' },
+        { label: 'Navy', value: 'navy', color: '#656466' },
+        { label: 'White', value: 'white', color: '#FFFFFF' }
       ]
     };
   }

@@ -9,11 +9,11 @@
 </template>
 <script>
 export default {
-  name: "ATextAction",
+  name: 'ATextAction',
   props: {
     text: {
       type: String,
-      default: ""
+      default: ''
     }
   }
 };

@@ -47,7 +47,7 @@
   </SfTabs>
 </template>
 <script>
-import { SfProperty, SfHeading, SfTabs, SfReview } from "@storefront-ui/vue";
+import { SfProperty, SfHeading, SfTabs, SfReview } from '@storefront-ui/vue';
 export default {
   components: {
     SfProperty,
@@ -55,39 +55,39 @@ export default {
     SfTabs,
     SfReview
   },
-  data() {
+  data () {
     return {
       properties: [
         {
-          name: "Product Code",
-          value: "578902-00"
+          name: 'Product Code',
+          value: '578902-00'
         },
         {
-          name: "Category",
-          value: "Pants"
+          name: 'Category',
+          value: 'Pants'
         },
         {
-          name: "Material",
-          value: "Cotton"
+          name: 'Material',
+          value: 'Cotton'
         },
         {
-          name: "Country",
-          value: "Germany"
+          name: 'Country',
+          value: 'Germany'
         }
       ],
       reviews: [
         {
-          author: "Jane D.Smith",
-          date: "April 2019",
+          author: 'Jane D.Smith',
+          date: 'April 2019',
           message:
             "I was looking for a bright light for the kitchen but wanted some item more modern than a strip light. this one is perfect, very bright and looks great. I can't comment on interlation as I had an electrition instal it. Would recommend",
           rating: 4
         },
         {
-          author: "Mari",
-          date: "Jan 2018",
+          author: 'Mari',
+          date: 'Jan 2018',
           message:
-            "Excellent light output from this led fitting. Relatively easy to fix to the ceiling,but having two people makes it easier, to complete the installation. Unable to comment on reliability at this time, but I am hopeful of years of use with good light levels. Excellent light output from this led fitting. Relatively easy to fix to the ceiling,",
+            'Excellent light output from this led fitting. Relatively easy to fix to the ceiling,but having two people makes it easier, to complete the installation. Unable to comment on reliability at this time, but I am hopeful of years of use with good light levels. Excellent light output from this led fitting. Relatively easy to fix to the ceiling,',
           rating: 5
         }
       ]

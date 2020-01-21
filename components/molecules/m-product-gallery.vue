@@ -16,13 +16,13 @@
   </div>
 </template>
 <script>
-import { SfGallery, SfImage } from "@storefront-ui/vue";
-import reduce from "lodash-es/reduce";
-import map from "lodash-es/map";
-import isEqual from "lodash-es/isEqual";
-import { onlineHelper } from "@vue-storefront/core/helpers";
+import { SfGallery, SfImage } from '@storefront-ui/vue';
+import reduce from 'lodash-es/reduce';
+import map from 'lodash-es/map';
+import isEqual from 'lodash-es/isEqual';
+import { onlineHelper } from '@vue-storefront/core/helpers';
 export default {
-  name: "MProductGallery",
+  name: 'MProductGallery',
   components: {
     SfGallery,
     SfImage
@@ -43,16 +43,16 @@ export default {
     }
   },
   computed: {
-    sliderOptions() {
+    sliderOptions () {
       return {
         startAt: this.currentIndex,
-        type: "slider",
+        type: 'slider',
         autoplay: false,
         rewind: false,
         gap: 0
       };
     },
-    variantImage() {
+    variantImage () {
       let variantImage = this.gallery.find(
         imageObject =>
           isEqual(imageObject.id, this.option) ||
@@ -69,7 +69,7 @@ export default {
 
       return variantImage;
     },
-    additionalImage() {
+    additionalImage () {
       const withoutVariantImage = this.gallery.filter(
         imageObject => !isEqual(this.variantImage.id, imageObject.id)
       );
@@ -80,9 +80,9 @@ export default {
 
       return withoutVariantImage[0];
     },
-    option() {
+    option () {
       return reduce(
-        map(this.configuration, "attribute_code"),
+        map(this.configuration, 'attribute_code'),
         (result, attribute) => {
           result[attribute] = this.configuration[attribute].id;
           return result;
@@ -90,10 +90,10 @@ export default {
         {}
       );
     },
-    isOnline() {
+    isOnline () {
       return onlineHelper.isOnline;
     },
-    currentIndex() {
+    currentIndex () {
       const index = this.gallery.findIndex(imageObject =>
         isEqual(imageObject.id, this.variantImage.id)
       );

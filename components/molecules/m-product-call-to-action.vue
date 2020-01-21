@@ -17,17 +17,17 @@
   </div>
 </template>
 <script>
-import { SfAddToCart } from "@storefront-ui/vue";
-import ATextAction from "theme/components/atoms/a-text-action";
+import { SfAddToCart } from '@storefront-ui/vue';
+import ATextAction from 'theme/components/atoms/a-text-action';
 export default {
-  name: "MProductCallToAction",
+  name: 'MProductCallToAction',
   components: {
     SfAddToCart,
     ATextAction
   },
-  data() {
+  data () {
     return {
-      qty: "1",
+      qty: '1',
       stock: 5
     };
   }

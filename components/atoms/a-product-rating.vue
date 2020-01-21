@@ -12,8 +12,8 @@
   </div>
 </template>
 <script>
-import { SfRating } from "@storefront-ui/vue";
-import ATextAction from "theme/components/atoms/a-text-action";
+import { SfRating } from '@storefront-ui/vue';
+import ATextAction from 'theme/components/atoms/a-text-action';
 export default {
   components: {
     SfRating,
